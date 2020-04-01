@@ -9,7 +9,7 @@ Source0:	https://sourceforge.net/projects/lxde/files/LXTerminal%20%28terminal%20
 Patch2:		mdk-lxterminal-conf.patch
 BuildRequires:	intltool
 BuildRequires: pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gtk+-x11-2.0)
+BuildRequires: pkgconfig(gtk+-x11-2.0)
 BuildRequires:	pkgconfig(vte)
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-style-xsl
@@ -46,6 +46,6 @@ Feature:
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
-#{_datadir}/pixmaps/*.png
+%{_iconsdir}/hicolor/8x*/apps/lxterminal.png
 %{_mandir}/man1/*
 
