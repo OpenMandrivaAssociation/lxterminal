@@ -1,16 +1,18 @@
 Summary:	Lightweight VTE-based terminal emulator
 Name:		lxterminal
 Version:	0.3.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://lxde.sourceforge.net/
 Source0:	https://sourceforge.net/projects/lxde/files/LXTerminal%20%28terminal%20emulator%29/LXTerminal%20%{version}/%{name}-%{version}.tar.xz
 Patch2:		mdk-lxterminal-conf.patch
+Patch3:  0001-Don-t-use-deprecated-vte_terminal_match_add_gregex.patch
 BuildRequires:	intltool
 BuildRequires: pkgconfig(glib-2.0)
-BuildRequires: pkgconfig(gtk+-x11-2.0)
-BuildRequires:	pkgconfig(vte)
+BuildRequires: pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(vte-2.91)
+BuildRequires: pkgconfig(libpcre2-32)
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-style-xsl
 BuildRequires:	xsltproc
@@ -32,9 +34,10 @@ Feature:
 %prep
 %setup -qn %{name}-%{version}
 %patch2 -p0 -b.conf
+%patch3 -p1
 
 %build
-%configure
+%configure -enable-gtk3
 %make_build
 
 %install
