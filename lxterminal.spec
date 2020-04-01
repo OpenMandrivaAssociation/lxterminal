@@ -46,6 +46,6 @@ Feature:
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
-%{_iconsdir}/hicolor/8x*/apps/lxterminal.png
+%{_iconsdir}/hicolor/*x*/apps/lxterminal.png
 %{_mandir}/man1/*
 
