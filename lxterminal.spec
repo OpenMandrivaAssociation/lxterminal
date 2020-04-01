@@ -1,17 +1,18 @@
-%define ver 0.1.11
-
 Summary:	Lightweight VTE-based terminal emulator
 Name:		lxterminal
-Version:	0.1.11
-Release:	9
+Version:	0.3.2
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://lxde.sourceforge.net/
-Source0:	http://dfn.dl.sourceforge.net/sourceforge/lxde/%{name}-%{version}.tar.gz
+Source0:	https://sourceforge.net/projects/lxde/files/LXTerminal%20%28terminal%20emulator%29/LXTerminal%20%{version}/%{name}-%{version}.tar.xz
 Patch2:		mdk-lxterminal-conf.patch
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(gtk+-x11-2.0)
 BuildRequires:	pkgconfig(vte)
+BuildRequires:	docbook-to-man
+BuildRequires:	docbook-style-xsl
+BuildRequires:	xsltproc
 Requires:	termcap
 
 %description
@@ -32,11 +33,11 @@ Feature:
 %patch2 -p0 -b.conf
 
 %build
-%configure2_5x
-%make
+%configure
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %find_lang %{name}
 
