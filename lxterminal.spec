@@ -10,7 +10,7 @@ Patch2:		mdk-lxterminal-conf.patch
 BuildRequires:	intltool
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gtk+-x11-2.0)
-BuildRequires:	pkgconfig(vte)
+BuildRequires:	pkgconfig(vte-2.91)
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-style-xsl
 BuildRequires:	xsltproc
