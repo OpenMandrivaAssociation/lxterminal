@@ -12,6 +12,7 @@ BuildRequires:	intltool
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(vte-2.91)
+BuildRequires: pkgconfig(libpcre)
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-style-xsl
 BuildRequires:	xsltproc
