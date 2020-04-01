@@ -10,7 +10,7 @@ Patch2:		mdk-lxterminal-conf.patch
 Patch3:  0001-Don-t-use-deprecated-vte_terminal_match_add_gregex.patch
 BuildRequires:	intltool
 BuildRequires: pkgconfig(glib-2.0)
-BuildRequires: pkgconfig(gtk+-x11-2.0)
+BuildRequires: pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(vte-2.91)
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-style-xsl
@@ -36,7 +36,7 @@ Feature:
 %patch3 -p1
 
 %build
-%configure
+%configure -enable-gtk3
 %make_build
 
 %install
