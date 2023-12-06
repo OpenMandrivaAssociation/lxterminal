@@ -1,21 +1,39 @@
+# git snapshot
+%global snapshot 1
+%if 0%{?snapshot}
+	%global commit		9b4299c292567b371158368686088900a4c0a128
+	%global commitdate	20230923
+	%global shortcommit	%(c=%{commit}; echo ${c:0:7})
+%endif
+
 Summary:	Lightweight VTE-based terminal emulator
 Name:		lxterminal
 Version:	0.4.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://lxde.sourceforge.net/
-Source0:	https://sourceforge.net/projects/lxde/files/LXTerminal%20%28terminal%20emulator%29/LXTerminal%20%{version}/%{name}-%{version}.tar.xz
-Patch2:		mdk-lxterminal-conf.patch
+#Source0:	https://sourceforge.net/projects/lxde/files/LXTerminal%20%28terminal%20emulator%29/LXTerminal%20%{version}/%{name}-%{version}.tar.xz
+Source0:	https://github.com/lxde/lxterminal/archive/%{?snapshot:%{commit}}%{!?snapshot:%{version}}/%{name}-%{?snapshot:%{commit}}%{!?snapshot:%{version}}.tar.gz
+Patch100:	lxterminal-openmandriva_conf.patch
 BuildRequires:	intltool
-BuildRequires: pkgconfig(glib-2.0)
-BuildRequires: pkgconfig(gtk+-3.0)
+#BuildRequires: pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(vte-2.91)
-BuildRequires: pkgconfig(libpcre2-32)
+BuildRequires:	pkgconfig(libpcre2-32)
 BuildRequires:	docbook-to-man
 BuildRequires:	docbook-style-xsl
 BuildRequires:	xsltproc
 Requires:	termcap
+
+%files -f %{name}.lang
+%{_bindir}/%{name}
+%{_datadir}/%{name}
+%{_datadir}/applications/*.desktop
+%{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_mandir}/man1/*
+
+#---------------------------------------------------------------------------
 
 %description
 Desktop-independent VTE-based terminal emulator without any unnecessary
@@ -31,22 +49,17 @@ Feature:
   the same process.
 
 %prep
-%setup -qn %{name}-%{version}
-%patch2 -p0 -b.conf
+%autosetup -p1 -n %{name}-%{?snapshot:%{commit}}%{!?snapshot:%{version}}
 
 %build
-%configure -enable-gtk3
+autoreconf -fiv
+%configure \
+	-enable-gtk3
 %make_build
 
 %install
 %make_install
 
+# locales
 %find_lang %{name}
-
-%files -f %{name}.lang
-%{_bindir}/%{name}
-%{_datadir}/%{name}
-%{_datadir}/applications/*.desktop
-%{_iconsdir}/hicolor/*x*/apps/lxterminal.png
-%{_mandir}/man1/*
 
