@@ -1,5 +1,5 @@
 # git snapshot
-%global snapshot 1
+#global snapshot 1
 %if 0%{?snapshot}
 	%global commit		116f89f71769b9a9852845f9308f73ba5de26bff
 	%global commitdate	20241210
@@ -8,8 +8,8 @@
 
 Summary:	Lightweight VTE-based terminal emulator
 Name:		lxterminal
-Version:	0.4.0
-Release:	5
+Version:	0.4.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		https://lxde.sourceforge.net/
