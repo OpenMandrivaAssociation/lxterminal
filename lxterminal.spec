@@ -16,6 +16,11 @@ Url:		https://lxde.sourceforge.net/
 #Source0:	https://sourceforge.net/projects/lxde/files/LXTerminal%20%28terminal%20emulator%29/LXTerminal%20%{version}/%{name}-%{version}.tar.xz
 Source0:	https://github.com/lxde/lxterminal/archive/%{?snapshot:%{commit}}%{!?snapshot:%{version}}/%{name}-%{?snapshot:%{commit}}%{!?snapshot:%{version}}.tar.gz
 Patch100:	lxterminal-openmandriva_conf.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	intltool
 #BuildRequires: pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
